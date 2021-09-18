@@ -1,0 +1,26 @@
+include includes/header.pug
+<div class="container">
+  <div class="row">
+    <div class="col-12 my-4">
+      p userType=> #{userType}
+      if userType == 0
+        <a href="/pages/sign-in">Sign In</a>
+      else if userType == 1
+        <a href="/pages/logout">Logout</a>
+      else if userType == 2
+        <a href="/pages/logout">Logout</a>
+        <a href="/pages/book-create">Book Create</a>
+    </div>
+  </div>
+  // books
+  .row
+    .books-container
+    each book, index in books
+      input(id=index value=book._id hidden)
+      .col-3
+        .card(onclick="toDetail(" + JSON.stringify(book) + ")")
+          img(src='/' + book.photo)
+        .card-body
+          h5.card-title= book.author
+          p.card-text= book.description
+</div>

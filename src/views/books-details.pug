@@ -1,0 +1,19 @@
+include includes/header.pug
+
+.container
+  .row
+    p userType: #{userType}
+  .row
+    .col-12
+      a(href="/pages/books") to Books 
+  .row
+    .col-md-8.offset-2
+      .card
+        img(src='/' + book.photo)
+      .card-body
+        h5.card-title= book.author
+        p.card-text= book.description
+  .row
+    if userType != 0
+      form(action=`/pages/likes/${book._id}`, method="post") 
+        button.btn.btn-primary(type="submit") likes
